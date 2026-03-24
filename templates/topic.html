@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Khan - {{ topic_id }}{% endblock %}
+
+{% block content %}
+<div class="topic-container">
+    <h1 id="topic-title">Loading...</h1>
+    <div id="topic-content">
+        <p>Loading topic data...</p>
+    </div>
+</div>
+
+<script>
+    // Load topic data from API
+    const topicId = '{{ topic_id }}';
+    fetch(`/api/topic/${topicId}`)
+        .then(response => response.json())
+        .then(data => {
+            // TODO: Populate template with interactive content
+            console.log('Topic data:', data);
+        })
+        .catch(error => console.error('Error loading topic:', error));
+</script>
+{% endblock %}
